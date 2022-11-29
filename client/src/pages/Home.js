@@ -33,22 +33,15 @@ function Home() {
   }, []);
 
   return (
-    <div className="contenedor">
+    <div className="contenedor bg-primary img-fluid">
       <div className="col-12">
-        <img
-          className="bg-image d-flex w-100"
-          src={background}
-          alt="backgroundIMG"
-        />
-
-        <h3 className="text-white mt-5 pt-5 text-center ">
-          This App was created by: <br /> Michael Yalovetzky <br /> Through many
-          different courses and projects i've learnt to work mixing <br />
-          Front End Development and Back End. <br /> Full Stack project using:{" "}
-          <br />
-          JavaScript / React / Node.js / Bootstrap / MySQLWorkbench / Postman /
-          VSCode
-        </h3>
+        <div className="row">
+          <img
+            className="bg-image d-flex w-100"
+            src={background}
+            alt="backgroundIMG"
+          />
+        </div>
       </div>
     </div>
   );

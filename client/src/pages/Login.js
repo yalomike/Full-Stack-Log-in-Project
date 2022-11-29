@@ -30,9 +30,13 @@ function Login() {
 
   return (
     <div className="container pt-5 text-center">
-      <div>
-        <label className="text-white ps-5">Username:</label>
+      <div className="row g-3">
+        <label className="text-login text-black me-3 d-flex text-uppercase">
+          Username
+        </label>
         <input
+          className="inputBox"
+          placeholder="Jason Bolt"
           type="text"
           name="username"
           id="username"
@@ -41,8 +45,12 @@ function Login() {
           }}
         />
 
-        <label className="text-white ps-5">Password:</label>
+        <label className="text-login text-black me-3 d-flex text-uppercase mt-5">
+          Password
+        </label>
         <input
+          className="inputBox"
+          placeholder="Insert your password"
           type="password"
           name="password"
           id="password"
@@ -50,16 +58,16 @@ function Login() {
             setPassword(event.target.value);
           }}
         />
-        <div className="justify-content-center d-flex mt-4">
-          <button className="btn btn-primary" onClick={login}>
+        <div className="button mt-5 ">
+          <button
+            className="btn btn-primary fs-6 text-uppercase pt-3 pb-3 ps-5 pe-5"
+            onClick={login}
+          >
             Log in
           </button>
         </div>
       </div>
-      <hr />
-      <Link className="pt-3 text-primary h4" to="/">
-        Back
-      </Link>
+      <h6 className="mt-5">Forgot your password?</h6>
     </div>
   );
 }

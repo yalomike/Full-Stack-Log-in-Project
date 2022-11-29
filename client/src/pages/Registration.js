@@ -24,38 +24,71 @@ function Registration() {
   };
 
   return (
-    <div>
+    <div className="container">
       <Formik
         initialValues={initialValues}
         onSubmit={onSubmit}
         validationSchema={validationSchema}
       >
         <Form className="formArea gap-4 w-50 pt-5 pb-5">
-          <label className="row text-white mb-2 ms-0">Username:</label>
+          <label className="text-login row text-black mb-2 ms-0 d-flex text-uppercase position-absolute me-5 mt-2">
+            Name
+          </label>
+          <ErrorMessage name="name" component="span" />
+          <Field
+            className="inputRegister "
+            type="name"
+            id="inputNamePost"
+            name="name"
+            placeholder="Ex. Michael..."
+          />
+
+          <label className="text-login row text-black mb-2 ms-0 d-flex text-uppercase position-absolute me-5 mt-2">
+            Lastname
+          </label>
+          <ErrorMessage name="lastname" component="span" />
+          <Field
+            className="inputRegister "
+            type="lastname"
+            id="inputLastNamePost"
+            name="lastname"
+            placeholder="Ex. Jordan..."
+          />
+
+          <label className="text-login row text-black mb-2 ms-0 d-flex text-uppercase position-absolute me-5 mt-2">
+            Username
+          </label>
           <ErrorMessage name="username" component="span" />
           <Field
+            className="inputRegister "
             type="username"
             id="inputCreatePost"
             name="username"
             placeholder="Ex. John123..."
           />
-          <label className="row text-white ms-0 mt-4">Password:</label>
 
+          <label className="text-login row text-black mb-2 ms-0 me-5 d-flex text-uppercase position-absolute mt-2 ">
+            Password
+          </label>
           <ErrorMessage name="password" component="span" />
           <Field
+            className=" inputRegister "
             type="password"
             id="passwordCreatePost"
             name="password"
             placeholder="Your Password..."
           />
-          <button className="btn btn-primary mt-5 ms-5" type="submit">
+
+          <button
+            className="btnRegister btn btn-primary fs-6 text-uppercase pt-3 pb-3 ps-5 pe-5 mt-5"
+            type="submit"
+          >
             Register
           </button>
-          <hr />
 
-          <Link className="pt-3 text-primary h5 ps-3 ms-5" to="/">
+          {/* <Link className="pt-3 text-primary h5 ps-3 ms-5" to="/">
             Home
-          </Link>
+          </Link> */}
         </Form>
       </Formik>
     </div>

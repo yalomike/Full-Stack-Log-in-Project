@@ -10,6 +10,7 @@ import UserProfile from "./pages/UserProfile";
 
 function App() {
   const [loggedIn, setLoggedIn] = useState("");
+  const [changeLogin, setChangeLogin] = useState(false);
 
   const [authState, setAuthState] = useState({
     username: "",
@@ -56,30 +57,46 @@ function App() {
     <div className="App">
       <AuthContext.Provider value={{ authState, setAuthState }}>
         <Router>
-          <div className="container w-50 position-absolute bg-white">
-            <div className="text-center d-flex ">
+          <div className="container w-50 position-absolute bg-white text-center">
+            <div className="boxLogin text-center d-flex ">
               {!authState.status ? (
                 <>
-                  <Link className="text-primary h4" to="/login">
+                  <Link
+                    onClick={() => {
+                      setChangeLogin(false);
+                    }}
+                    className="loginText text-primary h4"
+                    to="/"
+                  >
                     Log in
                   </Link>
-                  <Link className="text-primary h4 ms-3" to="/registration">
+                  <Link
+                    onClick={() => {
+                      setChangeLogin(true);
+                    }}
+                    className="signinText text-primary h4 ms-3"
+                    to="/"
+                  >
                     Sign in
                   </Link>
                 </>
               ) : (
                 <Link to="/">
-                  <button className="btn btn-primary ms-5" onClick={logout}>
+                  <button
+                    className="logoutText btn btn-primary ms-5"
+                    onClick={logout}
+                  >
                     Log out
                   </button>
                 </Link>
               )}
               {authState.status && (
-                <h1 className="text-primary mt-5">
+                <h1 className="welcome-text text-primary mt-5">
                   Welcome <br /> {authState.username}
                 </h1>
               )}
             </div>
+            {!changeLogin ? <Login /> : <Registration />}
           </div>
 
           <Routes>
