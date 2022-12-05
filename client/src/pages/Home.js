@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import background from "../images/1.jpg";
-
-import axios from "axios";
+import { Link } from "react-router-dom";
 
 function Home() {
   const [isLoggedIn, setIsLoggedIn] = useState("");
@@ -11,38 +10,47 @@ function Home() {
     status: false,
   });
 
-  useEffect(() => {
-    const getAuth = async () => {
-      const response = await axios.get("http://localhost:3001/auth/auth", {
-        header: {
-          accessToken: localStorage.getItem("accessToken"),
-        },
-      });
-      if (response.data.error) {
-        setAuthState({ ...authState, status: false });
-      } else {
-        window.localStorage.getItem("isLoggedIn");
-        setAuthState({
-          username: response.data.username,
-          id: response.data.id,
-          status: true,
-        });
-      }
-    };
-    getAuth();
-  }, []);
+  const logout = () => {
+    window.localStorage.removeItem("accessToken");
+    window.localStorage.removeItem("isLoggedIn");
+    setAuthState({
+      username: "",
+      id: 0,
+      status: false,
+    });
+  };
 
   return (
-    <div className="contenedor bg-primary img-fluid">
-      <div className="col-12">
-        <div className="row">
-          <img
-            className="bg-image d-flex w-100"
-            src={background}
-            alt="backgroundIMG"
-          />
-        </div>
+    <div className="container">
+      <div className="boxIntro">
+        <img
+          className="bg-image img-fluid"
+          src={background}
+          alt="background "
+        />
+        {!authState.status ? (
+          <>
+            <Link to="/login">
+              <button className="btnCont">
+                <div className="loginText text-black h4">Log in</div>
+              </button>
+            </Link>
+
+            <Link to="/registration">
+              <button className="btnCont2">
+                <div className="signinText text-black h4">Sign in</div>
+              </button>
+            </Link>
+          </>
+        ) : (
+          <Link to="/">
+            <button className="logoutBtn btn btn-primary" onClick={logout}>
+              Log out
+            </button>
+          </Link>
+        )}
       </div>
+      {/* <div>{!changeLogin ? <Login /> : <Registration />}</div> */}
     </div>
   );
 }

@@ -20,17 +20,17 @@ function Registration() {
     axios.post("http://localhost:3001/auth", data).then(() => {
       console.log(data);
     });
-    navigate("/login");
+    alert("You registered your user.");
   };
 
   return (
-    <div className="container">
+    <div className="containerRegistration">
       <Formik
         initialValues={initialValues}
         onSubmit={onSubmit}
         validationSchema={validationSchema}
       >
-        <Form className="formArea gap-4 w-50 pt-5 pb-5">
+        <Form className="formArea gap-4 w-50">
           <label className="text-login row text-black mb-2 ms-0 d-flex text-uppercase position-absolute me-5 mt-2">
             Name
           </label>
@@ -78,17 +78,20 @@ function Registration() {
             name="password"
             placeholder="Your Password..."
           />
-
-          <button
-            className="btnRegister btn btn-primary fs-6 text-uppercase pt-3 pb-3 ps-5 pe-5 mt-5"
-            type="submit"
-          >
-            Register
-          </button>
-
-          {/* <Link className="pt-3 text-primary h5 ps-3 ms-5" to="/">
-            Home
-          </Link> */}
+          <div>
+            <button
+              className="btnRegister btn btn-primary fs-6 text-uppercase pt-3 pb-3 ps-5 pe-5 mt-5"
+              type="submit"
+            >
+              Register
+            </button>
+            <br />
+            <div className="homeTag">
+              <Link className="text-primary h6" to="/">
+                Home
+              </Link>
+            </div>
+          </div>
         </Form>
       </Formik>
     </div>

@@ -4,74 +4,115 @@
   align-items: center;
   flex-direction: column;
   justify-content: space-around;
-  width: 100%;
-  height:100%;
 }
 
-html {
-  
-}
 
 body {
   margin: 0;
   padding: 0;
 }
 
-.formArea {
-  margin-left:100px;
+.boxIntro {
+  margin-left:-72px;
 }
+
 
 .bg-image {
-  width: 150vw;
-  height: 120vh;
-  opacity: 60%;
-  z-index: -1;
- 
+  opacity: 80%;
+  position: absolute;
+  z-index: -5;
 }
 
-.contenedor {
-  z-index: -1;
-}
-
-.button {
-
-}
 
 .container {
-  opacity: 70%;
-  width: 150px;
-  height: 550px;
-  margin-bottom: 120px;
   justify-content: center;
-  cursor: pointer;
-  border-radius: 40px;
+  border-radius: 10px;
   align-items: center;
+}
+
+.boxIntro .btnCont  {
+  margin-left:480px;
+  margin-top: 350px;
+}
+
+
+.btnCont {
+  margin-left:100px;  
+  margin-top: 300px;
+  margin-left: 400px;
+  padding-left: 90px;
+  padding-right: 90px;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  border-radius: 10px;
+  border-style: none;
+  z-index: 1;
+}
+
+.btnCont:hover {
+  cursor: pointer;
+  background-color: skyblue
+}
+.btnCont2 {
+  padding-left: 90px;
+  padding-right: 90px;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  border-radius: 10px;
+  margin-left:10px;
+  border-style: none;
 
 }
 
-.boxLogin {
-  text-align: center;
-  margin-left: 260px;
-  margin-top:50px
+.btnCont2:hover {
+  cursor: pointer;
+  background-color: skyblue
+}
+
+/* LOGIN */
+
+.loginContainer {
+  padding-top:200px;
+  padding-right: 330px;
+  padding-left:330px;
+  padding-bottom: 220px;
+  background-color: skyblue
 }
 
 .loginText {
   text-transform: uppercase;
   text-decoration: none;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
   font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-  margin-right: 50px;
   cursor: pointer;
   display: flex;
-  z-index: 100;
-
 }
 
 .loginText:hover {
   text-decoration: underline;
 }
+
+.inputBox {
+  border: none;
+  border-bottom: 1px solid #00000066;
+
+}
+
+.loginBox {
+  background-color: white;
+  border-radius: 20px;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  padding-right: 90px;
+  padding-left: 100px;
+}
+
+.text-login {
+  font-weight: 800;
+}
+
+
+
+/* SIGN IN */
 
 .signinText {
   text-transform: uppercase;
@@ -88,42 +129,61 @@ body {
   text-decoration: underline;
 }
 
-.inputBox {
-  border: none;
-  padding: 5px;
-  border-bottom: 1px solid #00000066;
-
-}
-
-.text-login {
-  font-weight: 800;
-}
-
-.loginimg {
-  width: 100vw;
-  height: 100vh;
-  margin-left: -553px;
-  position: absolute;
-  z-index: -1;
-  opacity: 50%;
-}
-
 .user-box {
   background-color: whitesmoke ;
   
 }
-/* .welcome-text {
-  margin-left:-40px;
-} */
+
+/* REGISTRATION */
+
+
+.containerRegistration {
+  padding-top:200px;
+  padding-bottom: 320px;
+  background-color: skyblue
+}
+
+.containerRegistration .formArea {
+  margin-left:360px;
+  background-color: white;
+  border-radius: 20px;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  padding-left: 100px;
+}
 
 .inputRegister {
   border: none;
   padding: 5px;
   border-bottom: 1px solid #00000066;
   width: 350px;
-  margin-left: 100px;
+  margin-left: 150px;
+  
 }
 
 .btnRegister {
   margin-left: 150px;
+}
+
+
+
+
+.welcome-text {
+  font-weight: 800;
+  display: flex;
+  position: absolute;
+  margin-top: 40px;
+}
+
+.logoutBtn {
+  margin-left: 110px;
+  margin-bottom: 40px;
+  margin-top:5px;
+  width: 100px;
+  position: relative;
+}
+
+.homeTag {
+  margin-left:220px;
+  margin-top: 30px;
 }

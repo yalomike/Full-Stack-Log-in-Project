@@ -9,18 +9,10 @@ import { AuthContext } from "./helpers/AuthContext";
 import UserProfile from "./pages/UserProfile";
 
 function App() {
-  const [loggedIn, setLoggedIn] = useState("");
-  const [changeLogin, setChangeLogin] = useState(false);
-
   const [authState, setAuthState] = useState({
     username: "",
     id: 0,
     status: false,
-  });
-
-  useEffect(() => {
-    window.localStorage.getItem("isLoggedIn");
-    setLoggedIn(true);
   });
 
   useEffect(() => {
@@ -43,62 +35,10 @@ function App() {
     getAuth();
   }, []);
 
-  const logout = () => {
-    window.localStorage.removeItem("accessToken");
-    window.localStorage.removeItem("isLoggedIn");
-    setAuthState({
-      username: "",
-      id: 0,
-      status: false,
-    });
-  };
-
   return (
     <div className="App">
       <AuthContext.Provider value={{ authState, setAuthState }}>
         <Router>
-          <div className="container w-50 position-absolute bg-white text-center">
-            <div className="boxLogin text-center d-flex ">
-              {!authState.status ? (
-                <>
-                  <Link
-                    onClick={() => {
-                      setChangeLogin(false);
-                    }}
-                    className="loginText text-primary h4"
-                    to="/"
-                  >
-                    Log in
-                  </Link>
-                  <Link
-                    onClick={() => {
-                      setChangeLogin(true);
-                    }}
-                    className="signinText text-primary h4 ms-3"
-                    to="/"
-                  >
-                    Sign in
-                  </Link>
-                </>
-              ) : (
-                <Link to="/">
-                  <button
-                    className="logoutText btn btn-primary ms-5"
-                    onClick={logout}
-                  >
-                    Log out
-                  </button>
-                </Link>
-              )}
-              {authState.status && (
-                <h1 className="welcome-text text-primary mt-5">
-                  Welcome <br /> {authState.username}
-                </h1>
-              )}
-            </div>
-            {!changeLogin ? <Login /> : <Registration />}
-          </div>
-
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/login" element={<Login />} />

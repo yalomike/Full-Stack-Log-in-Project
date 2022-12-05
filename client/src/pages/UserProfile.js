@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import {
   AiFillTwitterCircle,
   AiFillLinkedin,
@@ -6,24 +6,55 @@ import {
   AiFillGithub,
 } from "react-icons/ai";
 import michael from "../images/michael.jpeg";
-import background from "../images/1.jpg";
+import { Link } from "react-router-dom";
+import axios from "axios";
 
 function UserProfile() {
+  const [isLoggedIn, setIsLoggedIn] = useState("");
   const [authState, setAuthState] = useState({
     username: "",
     id: 0,
     status: false,
   });
 
-  //
+  useEffect(() => {
+    const getAuth = async () => {
+      const response = await axios.get("http://localhost:3001/auth/auth", {
+        header: {
+          accessToken: localStorage.getItem("accessToken"),
+        },
+      });
+      if (response.data.error) {
+        setAuthState({ ...authState, status: false });
+      } else {
+        window.localStorage.getItem("isLoggedIn");
+        setAuthState({
+          username: response.data.username,
+          id: response.data.id,
+          status: true,
+        });
+      }
+    };
+    getAuth();
+  }, []);
+
+  const logout = () => {
+    window.localStorage.removeItem("accessToken");
+    setAuthState({
+      username: "",
+      id: 0,
+      status: false,
+    });
+  };
 
   return (
     <div className="container w-25 bg-white">
-      <img className="loginimg" src={background} alt="backgroundIMG" />
       <div className="row user-box">
         <div className="col-12">
           {!authState.status && (
-            <h1 className="login text-black pb-3 pt-3">Fullstack Project</h1>
+            <h1 className="login text-black pb-3 pt-3 ms-4">
+              Fullstack Project
+            </h1>
           )}
 
           {!authState.status && (
@@ -56,6 +87,14 @@ function UserProfile() {
               <AiFillMessage />
             </a>
           </div>
+          <div className="welcome-text text-black ">
+            {!authState.status && <h1>Welcome {authState.id}</h1>}
+          </div>
+          <Link to="/">
+            <button className="logoutBtn btn btn-primary" onClick={logout}>
+              Log out
+            </button>
+          </Link>
         </div>
       </div>
     </div>

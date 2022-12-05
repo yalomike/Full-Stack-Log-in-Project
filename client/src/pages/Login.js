@@ -22,15 +22,14 @@ function Login() {
           id: response.data.id,
           status: true,
         });
-        window.localStorage.setItem("isLoggedIn", true);
         navigate("/userprofile");
       }
     });
   };
 
   return (
-    <div className="container pt-5 text-center">
-      <div className="row g-3">
+    <div className="loginContainer text-center">
+      <div className="loginBox row g-3">
         <label className="text-login text-black me-3 d-flex text-uppercase">
           Username
         </label>
@@ -67,7 +66,11 @@ function Login() {
           </button>
         </div>
       </div>
+
       <h6 className="mt-5">Forgot your password?</h6>
+      <Link className="pt-3 text-primary h6 " to="/">
+        Home
+      </Link>
     </div>
   );
 }
